@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<style>
+    @media(min-width:670px){
+        img.responsive{
+            width:50%;
+        }
+    }
+</style>
+<img class="responsive" src="https://pbs.twimg.com/media/E6itxjxUcAE_c16?format=jpg&name=large" alt="ロゴ" width="100%">
+<div>
+    <p style="font-size:150%;">あなたが気になるYouTuberのランクがわかります</p>
+    <p>{{search_title}}</p>
+    <form action="/search" method="POST">
+        <input name="input" id="input" type="text" size="30" placeholder="チャンネル名を入力してください">
+        <input class="btn btn-primary btn-sm" type = "submit" name = "submit" value="検索">
+    </form>
+    <br>
+    <br>
+    <p style="color: red;">＜注意点＞</p>
+    <p>登録者数や高評価数・低評価数を非公開にしているチャンネルは評価できません！</p>
+</div>
+{% endblock %}

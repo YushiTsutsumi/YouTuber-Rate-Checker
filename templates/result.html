@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<p>このチャンネルのランクは…</p>
+<style>
+    @media(min-width:670px){
+        div.card{
+            width:50%;
+        }
+    }
+</style>
+<div class="card" style="margin: auto;" width="50%">
+    <p style="font-size:150%;">{{ final_catch_copy }}</p>
+    <p style="font-size:200%; color:red;"><b>{{ final_total_rank }}</b></p>
+</div>
+<canvas id="myRaderChart"></canvas>
+<!-- CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+<script>
+    var ctx = document.getElementById("myRaderChart");
+    var myRadarChart = new Chart(ctx, {
+        type: 'radar', 
+        data: { 
+            labels: ['チャンネル登録者数', 'キャリア',　'再生回数', '視聴者愛'],
+            datasets: [{
+                label: '評価スコア詳細',
+                data: ['{{ subscribers_score }}', '{{ career_score }}', '{{ view_count_score }}', '{{ love_score }}'],
+                backgroundColor: 'RGBA(255,0,0, 0.5)',
+                borderColor: 'RGBA(225,95,150, 1)',
+                borderWidth: 1,
+                pointBackgroundColor: 'RGB(255,0,0,177)'
+            }],
+        },
+        options: {
+            scale:{
+                ticks:{
+                    suggestedMin: 0,
+                    suggestedMax: 5,
+                    stepSize: 1,
+                    }
+                }
+            }
+        }
+    );
+</script>
+<br>
+<style>
+    @media(min-width:670px){
+        div.card{
+            width:50%;
+        }
+    }
+</style>
+<div class="card" style="margin: auto;" width="50%">
+    <p><b>項目別評価</b></p>
+    <ul style="text-align: left;">
+        <li>チャンネル登録者数：{{ final_subscribers_review }}</li>
+        <li>再生回数：{{ final_view_count_review }}</li>
+        <li>キャリア：{{ final_career_review }}</li>
+        <li>視聴者愛：{{ final_love_review }}</li>
+    </ul>
+</div>
+<br>
+<p>※YouTubeチャンネル単体として評価されています</p>
+<p>※サブチャンネルやYouTube以外のことは評価に反映されていません</p>
+<br>
+<a class="btn btn-dark" href="/" role="button">トップに戻る</a>
+{% endblock %}

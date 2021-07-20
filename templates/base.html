@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="icon" type="image/x-icon" href="https://pbs.twimg.com/media/E6kOYWvVIAQ1J7E?format=jpg&name=small">
+    <title>YouTuber格付けチェッカー</title>
+    {% block head %}{% endblock %}
+</head>
+
+<body style="text-align: center;">
+    <nav class="navbar navbar-light bg-light p-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/" style="font-size: 1rem;"><b>YouTuber格付けチェッカー</b></a>
+        </div>
+    </nav>
+    {% block body %}{% endblock %}
+</body>
+
+</html>
